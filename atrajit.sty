@@ -1,0 +1,57 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{atrajit}[2025/01/01 Atrajit’s Math & MZV Package]
+
+% ----------- Packages -------------
+\RequirePackage{geometry}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{mathtools}
+\RequirePackage{amsthm}
+\RequirePackage{bm}
+\RequirePackage{mathrsfs}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{enumitem}
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
+\RequirePackage{fontawesome}
+\RequirePackage{fancyhdr}
+\RequirePackage{hyperref}
+\usetikzlibrary{positioning, shapes.misc, shapes.symbols, shapes.geometric}
+
+% Bibliography (optional – user must load biber)
+\RequirePackage[backend=biber,style=ieee]{biblatex}
+
+% ----------- Import local macro files -------------
+\InputIfFileExists{utils.tex}{}{}
+\InputIfFileExists{macros.tex}{}{}
+
+% ----------- Page style -------------
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{} % clear defaults
+
+% Commands defined in utils/macros:
+\fancyFootPageNum
+\fancyHeaderContent
+
+
+\newcommand{\todotea}{\textbf{\textcolor{red}{TODO}}~\faCoffee}
+
+
+
+% ----------- Theorem Environments -------------
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\endinput

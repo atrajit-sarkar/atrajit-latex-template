@@ -1,0 +1,14 @@
+% New commands
+% \newcommand{\properideal}{\underset{\neq}{\vartriangleleft}}
+% \numberwithin{equation}{subsubsection}
+\newcommand{\useSubsubsectionEqNum}{
+  \makeatletter
+  \numberwithin{equation}{subsubsection}
+  \makeatother
+}
+
+
+% Use normal numbers internally, but print them as ζ(1), ζ(2), ...
+\makeatletter
+\renewcommand{\thefootnote}{$\zeta_{[\arabic{footnote}]}$}
+\makeatother

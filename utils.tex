@@ -1,0 +1,59 @@
+% utils.tex
+
+% math tools
+\newcommand{\zetacircle}{%
+    \tikz[baseline=-0.7ex]{
+        \node[
+            circle,
+            fill=blue!70!black,
+            draw=blue!90!black,
+            line width=0.35pt,
+            text=white,
+            inner sep=0.8pt,      % << smaller padding
+            minimum size=0.95em   % << smaller circle
+        ] (z) {\scriptsize$\bm{\zeta}$};
+    }%
+}
+
+
+\newcommand{\fancyFootPageNum}{
+    % Page style: Comic-style cloud thinking bubble in top right corner
+    \setlength{\footskip}{66pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\fancyfoot[C]{
+    \raisebox{10pt}{% raises bubble further from the line
+    \begin{tikzpicture}[baseline=(main.base)]
+
+        % --- Bubble tail dots (thinking bubble style) ---
+        \node[circle, fill=blue!40, inner sep=0.8pt] (t1) at (0,0) {};
+        \node[circle, fill=blue!45, inner sep=1.2pt] (t2) at (0.15,0.05) {};
+        \node[circle, fill=blue!50, inner sep=1.6pt] (t3) at (0.32,0.08) {};
+
+        % --- Main cloud thinking bubble (compact & professional) ---
+        \node[
+            cloud,
+            cloud puffs=15,
+            cloud puff arc=120,
+            aspect=2.5,               % makes it more elliptical
+            draw=blue!70!black,
+            line width=0.6pt,
+            fill=blue!8,
+            inner xsep=3pt,           % horizontal padding
+            inner ysep=2pt,           % vertical padding (compact)
+            text=blue!80!black,
+            right=0.15cm of t3
+        ] (main)
+        {$\thepage\!\cdot\!\boldsymbol{\zeta(\emptyset)}$};
+
+    \end{tikzpicture}%
+    }
+}
+}
+
+% \Fancy Header Utils
+\newcommand{\fancyHeaderContent}{
+    \renewcommand{\headrulewidth}{0.3pt} % thin decorative line
+\fancyhead[L]{Atrajit Sarkar}
+\fancyhead[C]{\leftmark \text{ }$\sim$\zetacircle$\sim$ \rightmark}      % Subsection title
+}
+
