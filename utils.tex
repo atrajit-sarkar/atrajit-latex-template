@@ -8,7 +8,7 @@
 
 % Elegant zeta symbol with professional academic styling
 % Features: Double-ring design, gradient effect, refined typography
-\newcommand{\zetacircle}{%
+\providecommand{\zetacircle}{%
     \tikz[baseline=-0.65ex]{
         % Outer decorative ring (subtle accent)
         \draw[
@@ -37,7 +37,7 @@
 % Footer Design: Professional Cloud Thought Bubble
 %-----------------------------------------------------------------------------
 
-\newcommand{\fancyFootPageNum}{
+\providecommand{\fancyFootPageNum}{
     \setlength{\footskip}{50pt}
     \renewcommand{\footrulewidth}{0.2pt}
     \fancyfoot[C]{
@@ -76,7 +76,7 @@
 %-----------------------------------------------------------------------------
 
 % Helper to test for empty tokens (avoids @-macros)
-\newcommand{\ifBlankTF}[3]{%
+\providecommand{\ifBlankTF}[3]{%
     \if\relax\detokenize{#1}\relax
         #2% Case: blank
     \else
@@ -84,7 +84,7 @@
     \fi
 }
 
-\newcommand{\fancyHeaderContent}{
+\providecommand{\fancyHeaderContent}{
     % Header rule with refined thickness for professional appearance
     \renewcommand{\headrulewidth}{0.4pt}
     
@@ -111,7 +111,7 @@
 %-----------------------------------------------------------------------------
 
 % Decorative section separator with elegant design
-\newcommand{\sectionbreak}{%
+\providecommand{\sectionbreak}{%
     \vspace{1.5em}
     \begin{center}
         \begin{tikzpicture}
