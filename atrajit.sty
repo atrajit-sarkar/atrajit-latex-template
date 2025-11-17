@@ -78,14 +78,14 @@
 \fancyHeaderContent
 
 % Professional section marking (academic book style)
-% Section: Display as "Section X | Title" (stored via standard marks)
+% Section: Display with section symbol (§)
 \renewcommand{\sectionmark}[1]{%
-    \markboth{\textsc{Section~\thesection}\enspace\textbar\enspace#1}{}%
+    \markboth{{\scshape\S\,\thesection}\enspace\raisebox{-0.15ex}{$\cdot$}\enspace#1}{}%
 }
 
-% Subsection: Display as "X.Y Title"
+% Subsection: Display with section symbol
 \renewcommand{\subsectionmark}[1]{%
-    \markright{\thesubsection\enspace#1}%
+    \markright{\S\,\thesubsection\enspace#1}%
 }
 
 %=============================================================================
