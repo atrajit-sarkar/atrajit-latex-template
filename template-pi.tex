@@ -1,0 +1,196 @@
+% ============================================================================
+% SAMPLE DOCUMENT USING ATRAJIT-PI THEME
+% ============================================================================
+% To use this theme, simply replace \usepackage{atrajit} with:
+% \usepackage{atrajit-pi}
+% ============================================================================
+
+\documentclass[11pt, a4paper]{article}
+
+% ============================================================================
+% PACKAGE SELECTION - Choose Your Theme
+% ============================================================================
+
+% Original Zeta Theme (Blue colors, zeta symbols)
+% \usepackage{atrajit}
+
+% NEW: Elegant Pi Theme (Warm brown/gold colors, pi symbols)
+\usepackage{atrajit-pi}
+
+% ============================================================================
+% DOCUMENT METADATA
+% ============================================================================
+
+\title{\textbf{Elegant Mathematics with the Pi Theme}\\
+       \large A Demonstration of the Atrajit-Pi Academic Package}
+\author{Atrajit Sarkar}
+\date{\today}
+
+% Bibliography file (if needed)
+% \addbibresource{references.bib}
+
+% ============================================================================
+% DOCUMENT CONTENT
+% ============================================================================
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document demonstrates the elegant \texttt{atrajit-pi} theme, featuring warm academic colors, sophisticated typography, and pi-themed decorations. The package provides a complete professional look for mathematical documents, research papers, and academic notes.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ============================================================================
+\section{Introduction to the Pi Theme}
+% ============================================================================
+
+The \texttt{atrajit-pi} package provides an elegant alternative to the original \texttt{atrajit} theme. Key features include:
+
+\begin{itemize}
+    \item Warm color palette (browns and golds) for sophisticated appearance
+    \item Pi-themed decorative elements throughout
+    \item Hexagonal and circular badge designs
+    \item Enhanced theorem environments with colored frames
+    \item Elegant ornamental headers and footers
+\end{itemize}
+
+\subsection{Color Scheme}
+
+The theme uses a carefully selected academic color palette:
+\begin{itemize}
+    \item \textcolor{piPrimary}{\textbf{Primary:}} Saddle Brown for main elements
+    \item \textcolor{piSecondary}{\textbf{Secondary:}} Dark Goldenrod for accents
+    \item \textcolor{piAccent}{\textbf{Accent:}} Peru for highlights
+    \item \textcolor{piLight}{\textbf{Background:}} Wheat for subtle fills
+\end{itemize}
+
+% ============================================================================
+\section{Mathematical Environments}
+% ============================================================================
+
+\subsection{Theorem Environments}
+
+The pi theme includes beautifully styled theorem environments:
+
+\begin{theorem}[Fundamental Theorem of Calculus]
+Let $f$ be continuous on $[a,b]$. Then
+\[
+\int_a^b f(x)\,dx = F(b) - F(a)
+\]
+where $F$ is any antiderivative of $f$.
+\end{theorem}
+
+\begin{proof}
+This follows from the definition of the definite integral and the chain rule.
+\end{proof}
+
+\begin{lemma}
+Every bounded sequence in $\RR^n$ has a convergent subsequence.
+\end{lemma}
+
+\begin{proposition}
+The set $\QQ$ of rational numbers is countable.
+\end{proposition}
+
+\begin{corollary}
+The set of algebraic numbers is also countable.
+\end{corollary}
+
+\subsection{Definitions and Examples}
+
+\begin{definition}[Metric Space]
+A \defterm{metric space} is a pair $(X, d)$ where $X$ is a set and $d: X \times X \to \RR$ satisfies:
+\begin{enumerate}
+    \item $d(x,y) \geq 0$ with equality iff $x = y$
+    \item $d(x,y) = d(y,x)$ (symmetry)
+    \item $d(x,z) \leq d(x,y) + d(y,z)$ (triangle inequality)
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+The Euclidean space $\RR^n$ with the standard metric $d(x,y) = \|x-y\|$ forms a metric space.
+\end{example}
+
+\begin{remark}
+Not every topological space can be metrized.
+\end{remark}
+
+% ============================================================================
+\section{Special Features}
+% ============================================================================
+
+\subsection{Custom Markers}
+
+The pi theme includes several custom markers:
+
+\todostar\ This is a TODO item that needs attention.
+
+\notebell\ This is an important note to remember.
+
+\importantmark\ This highlights critical information.
+
+\subsection{Text Highlighting}
+
+You can emphasize mathematical terms using \verb|\mathterm{term}|: The \mathterm{eigenvalue} is a fundamental concept.
+
+For definitions, use \verb|\defterm{term}|: A \defterm{manifold} is a topological space.
+
+\subsection{Key Concept Box}
+
+Use the \verb|\keybox| command for important concepts:
+
+\keybox{%
+\textbf{Key Insight:} The relationship between $\pi$ and $e$ is given by Euler's identity:
+\[
+e^{i\pi} + 1 = 0
+\]
+This is considered one of the most beautiful equations in mathematics.
+}
+
+% ============================================================================
+\section{Mathematical Examples}
+% ============================================================================
+
+\subsection{Important Constants}
+
+The constant \piconst\ appears throughout mathematics:
+
+\begin{equation}
+\int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
+\end{equation}
+
+\begin{equation}
+\zeta(2) = \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+\end{equation}
+
+\subsection{Complex Analysis}
+
+\begin{theorem}[Residue Theorem]
+Let $f$ be analytic inside and on a simple closed contour $C$ except for isolated singularities. Then:
+\[
+\oint_C f(z)\,dz = 2\pi i \sum \text{Res}(f, z_k)
+\]
+\end{theorem}
+
+% ============================================================================
+\section{Conclusion}
+% ============================================================================
+
+The \texttt{atrajit-pi} theme provides a sophisticated, elegant alternative for academic documents. Simply change your package declaration from \verb|\usepackage{atrajit}| to \verb|\usepackage{atrajit-pi}| to transform your document's appearance.
+
+\sectionbreak
+
+\begin{center}
+\textit{Happy typesetting with the Pi theme!}
+\end{center}
+
+% ============================================================================
+% BIBLIOGRAPHY (if needed)
+% ============================================================================
+% \printbibliography
+
+\end{document}

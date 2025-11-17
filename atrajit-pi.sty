@@ -1,0 +1,188 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{atrajit-pi}[2025/11/17 Atrajit's Elegant Pi-Themed Academic Package]
+
+%=============================================================================
+% PACKAGE DEPENDENCIES
+%=============================================================================
+
+% --- Core Mathematics Packages ---
+\RequirePackage{amsmath}           % Advanced math typesetting
+\RequirePackage{amssymb}           % Mathematical symbols
+\RequirePackage{amsfonts}          % Mathematical fonts
+\RequirePackage{mathtools}         % Enhanced math environments
+\RequirePackage{amsthm}            % Theorem environments
+\RequirePackage{bm}                % Bold mathematics
+\RequirePackage{mathrsfs}          % Script fonts for mathematics
+
+% --- Graphics and Visualization ---
+\RequirePackage{xcolor}            % Color support
+\RequirePackage{graphicx}          % Graphics inclusion
+\RequirePackage{tikz}              % Advanced graphics
+\RequirePackage{tikz-cd}           % Commutative diagrams
+\usetikzlibrary{positioning, shapes.misc, shapes.symbols, shapes.geometric, decorations.pathmorphing, decorations.markings, shadows}
+
+% --- Document Layout and Typography ---
+\RequirePackage{geometry}          % Page layout control
+\RequirePackage{fancyhdr}          % Custom headers and footers
+\RequirePackage{enumitem}          % Enhanced list environments
+\RequirePackage{fontawesome}       % Icon fonts
+
+% --- Bibliography Management ---
+\RequirePackage[backend=biber,style=alphabetic]{biblatex}
+
+% --- Hyperlinks (load last) ---
+\RequirePackage{hyperref}          % Hyperlinks and cross-references
+
+%=============================================================================
+% COLOR SCHEME - Elegant Academic Palette
+%=============================================================================
+
+% Define custom colors for the Pi theme
+\definecolor{piPrimary}{RGB}{139, 69, 19}      % Saddle Brown - elegant and scholarly
+\definecolor{piSecondary}{RGB}{184, 134, 11}   % Dark Goldenrod - refined accent
+\definecolor{piAccent}{RGB}{205, 133, 63}      % Peru - warm highlight
+\definecolor{piDark}{RGB}{101, 67, 33}         % Dark Brown
+\definecolor{piLight}{RGB}{245, 222, 179}      % Wheat - subtle background
+
+%=============================================================================
+% IMPORT LOCAL MACRO FILES
+%=============================================================================
+\InputIfFileExists{utils-pi.tex}{}{}
+\InputIfFileExists{macros-pi.tex}{}{}
+
+%=============================================================================
+% PAGE LAYOUT CONFIGURATION
+%=============================================================================
+
+% Set elegant margins with more white space
+\geometry{
+    margin=1.2in,
+    headheight=18pt,
+    footskip=0.5in
+}
+
+% Configure page style with fancy headers/footers
+\pagestyle{fancy}
+\fancyhf{}                          % Clear default settings
+\setlength{\headheight}{18pt}       % Ensure adequate header space
+
+% Plain page style for title pages and chapter beginnings
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyFootPageNumPi
+}
+
+%=============================================================================
+% HEADER AND FOOTER CUSTOMIZATION
+%=============================================================================
+
+% Apply custom footer and header commands (defined in utils-pi.tex)
+\fancyFootPageNumPi
+\fancyHeaderContentPi
+
+% Track subsection titles for dynamic header content
+\newcommand{\currentSubsectionMarkPi}{}
+
+% Elegant section marking (sophisticated academic style)
+\renewcommand{\sectionmark}[1]{%
+	\markboth{%
+		{\scshape\S\,\thesection}\enspace\raisebox{-0.15ex}{$\cdot$}\enspace#1%
+	}{}%
+}
+
+% Subsection: Display with refined typography
+\renewcommand{\subsectionmark}[1]{%
+	\markright{%
+		\S\,\thesubsection\enspace#1%
+	}%
+	\gdef\currentSubsectionMarkPi{%
+		\S\,\thesubsection\enspace#1%
+	}%
+}
+
+%=============================================================================
+% CUSTOM UTILITY COMMANDS
+%=============================================================================
+
+% TODO marker with star icon
+\newcommand{\todostar}{\textbf{\textcolor{piPrimary}{TODO}}~\textcolor{piSecondary}{\faStar}}
+
+% Note marker with bell icon
+\newcommand{\notebell}{\textcolor{piPrimary}{\faBell}\enspace\textbf{Note:}}
+
+% Important marker with exclamation
+\newcommand{\importantmark}{\textcolor{piPrimary}{\faExclamationTriangle}\enspace\textbf{Important:}}
+
+%=============================================================================
+% THEOREM ENVIRONMENTS - Elegant Styled Boxes
+%=============================================================================
+
+% Define custom theorem styles with elegant boxes
+
+% Main theorem style with colored frame
+\newtheoremstyle{pitheoremstyle}%
+{12pt}%                      % Space above
+{12pt}%                      % Space below
+{\itshape}%                  % Body font
+{}%                          % Indent amount
+{\bfseries\color{piPrimary}}% Theorem head font
+{.}%                         % Punctuation after theorem head
+{.5em}%                      % Space after theorem head
+{\thmname{#1}\thmnumber{ #2}\thmnote{ {\normalfont(#3)}}}% Theorem head spec
+
+% Definition style with lighter appearance
+\newtheoremstyle{pidefinitionstyle}%
+{12pt}%                      % Space above
+{12pt}%                      % Space below
+{\normalfont}%               % Body font
+{}%                          % Indent amount
+{\bfseries\color{piSecondary}}% Theorem head font
+{.}%                         % Punctuation after theorem head
+{.5em}%                      % Space after theorem head
+{\thmname{#1}\thmnumber{ #2}\thmnote{ {\normalfont(#3)}}}% Theorem head spec
+
+% Remark style with italic header
+\newtheoremstyle{piremarkstyle}%
+{10pt}%                      % Space above
+{10pt}%                      % Space below
+{\normalfont}%               % Body font
+{}%                          % Indent amount
+{\itshape\color{piDark}}%    % Theorem head font
+{.}%                         % Punctuation after theorem head
+{.5em}%                      % Space after theorem head
+{\thmname{#1}\thmnumber{ #2}\thmnote{ {\normalfont(#3)}}}% Theorem head spec
+
+% Apply styles
+\theoremstyle{pitheoremstyle}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{pidefinitionstyle}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\theoremstyle{piremarkstyle}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+%=============================================================================
+% HYPERLINK STYLING
+%=============================================================================
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=piPrimary,
+    citecolor=piSecondary,
+    urlcolor=piAccent,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1,
+    pdfstartview=Fit,
+    pdfpagemode=UseOutlines
+}
+
+\endinput
