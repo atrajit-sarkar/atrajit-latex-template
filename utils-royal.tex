@@ -121,12 +121,14 @@
     \fancyhead[C]{%
         \footnotesize\itshape\color{royalDark}%
         \leftmark%
-        \enspace%
-        \textcolor{royalAccent}{$\sim$}%
-        \;\zetacircle\;%
-        \textcolor{royalAccent}{$\sim$}%
-        \enspace%
-        \rightmark%
+        \ifBlankTF{\rightmark}{}{%
+            \enspace%
+            \textcolor{royalAccent}{$\sim$}%
+            \;\zetacircle\;%
+            \textcolor{royalAccent}{$\sim$}%
+            \enspace%
+            \rightmark%
+        }%
     }
     
     % Right header: Magic icon

@@ -107,12 +107,14 @@
     \fancyhead[C]{%
         \footnotesize\itshape\color{emeraldDark}%
         \leftmark%
-        \enspace%
-        \textcolor{emeraldAccent}{$\sim$}%
-        \;\zetacircle\;%
-        \textcolor{emeraldAccent}{$\sim$}%
-        \enspace%
-        \rightmark%
+        \ifBlankTF{\rightmark}{}{%
+            \enspace%
+            \textcolor{emeraldAccent}{$\sim$}%
+            \;\zetacircle\;%
+            \textcolor{emeraldAccent}{$\sim$}%
+            \enspace%
+            \rightmark%
+        }%
     }
     
     % Right header: Nature icon

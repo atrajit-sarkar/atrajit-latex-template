@@ -91,7 +91,7 @@
     % Left header: Section and subsection with elegant zeta separator
     \fancyhead[C]{%
         \footnotesize\itshape%
-        \ifBlankTF{\leftmark}{}{\nouppercase{\leftmark}}%
+        \nouppercase{\leftmark}%
         \ifBlankTF{\rightmark}{}{%
             \quad$\sim$\raisebox{-0.1ex}{\zetacircle}$\sim$\quad\nouppercase{\rightmark}%
         }%

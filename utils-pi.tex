@@ -134,12 +134,14 @@
     \fancyhead[C]{%
         \footnotesize\itshape\color{piDark}%
         \leftmark%
-        \enspace%
-        \textcolor{piAccent}{$\sim$}%
-        \;\zetacircle\;%
-        \textcolor{piAccent}{$\sim$}%
-        \enspace%
-        \rightmark%
+        \ifBlankTF{\rightmark}{}{%
+            \enspace%
+            \textcolor{piAccent}{$\sim$}%
+            \;\zetacircle\;%
+            \textcolor{piAccent}{$\sim$}%
+            \enspace%
+            \rightmark%
+        }%
     }
     
     % Right header: Elegant graduation cap icon

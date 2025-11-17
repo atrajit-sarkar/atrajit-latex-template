@@ -47,8 +47,290 @@
 %=============================================================================
 % IMPORT LOCAL MACRO FILES
 %=============================================================================
-\InputIfFileExists{utils-pi.tex}{}{}
-\InputIfFileExists{macros-pi.tex}{}{}
+%=============================================================================
+% UTILITY MACROS AND VISUAL ELEMENTS - PI THEME
+%=============================================================================
+
+%-----------------------------------------------------------------------------
+% Mathematical Decorations - Pi Symbol Design
+%-----------------------------------------------------------------------------
+
+% Elegant pi symbol with sophisticated hexagonal frame
+\providecommand{\zetacircle}{%
+    \tikz[baseline=-0.6ex]{
+        % Outer hexagonal frame (elegant geometry)
+        \draw[
+            piDark,
+            line width=0.6pt,
+            rounded corners=0.5pt
+        ] (0,0.55em) -- (0.48em,0.275em) -- (0.48em,-0.275em) -- 
+          (0,-0.55em) -- (-0.48em,-0.275em) -- (-0.48em,0.275em) -- cycle;
+        
+        % Inner circle with warm gradient effect
+        \fill[piLight] (0,0) circle (0.48em);
+        \draw[
+            piSecondary,
+            line width=0.5pt
+        ] (0,0) circle (0.48em);
+        
+        % Pi symbol in elegant typography
+        \node[
+            text=piPrimary,
+            font=\normalsize\boldmath,
+            inner sep=0pt
+        ] at (0,0) {$\pi$};
+    }%
+}
+
+% Alternative: Circular pi badge with ornamental border
+\providecommand{\pibadge}{%
+    \tikz[baseline=-0.6ex]{
+        % Ornamental outer ring
+        \foreach \angle in {0,45,90,135,180,225,270,315} {
+            \fill[piSecondary, opacity=0.3] 
+                (\angle:0.62em) circle (0.08em);
+        }
+        
+        % Main circular frame
+        \fill[piLight] (0,0) circle (0.52em);
+        \draw[piPrimary, line width=0.6pt] (0,0) circle (0.52em);
+        \draw[piSecondary, line width=0.3pt, opacity=0.5] (0,0) circle (0.46em);
+        
+        % Pi symbol
+        \node[
+            text=piDark,
+            font=\normalsize\boldmath,
+            inner sep=0pt
+        ] at (0,0) {$\pi$};
+    }%
+}
+
+%-----------------------------------------------------------------------------
+% Footer Design: Elegant Ornamental Banner
+%-----------------------------------------------------------------------------
+
+\providecommand{\fancyFootPageNum}{
+    \setlength{\footskip}{50pt}
+    \renewcommand{\footrulewidth}{0pt}
+    \fancyfoot[C]{
+        \vspace{6pt}
+        \begin{tikzpicture}[baseline=(page.base)]
+            % Decorative left flourish
+            \node[
+                text=piSecondary,
+                font=\footnotesize
+            ] (left) at (-1.5,0) {$\diamond$};
+            
+            % Ornamental line left
+            \draw[piAccent, line width=0.4pt] 
+                (-1.3,0) -- (-0.5,0);
+            
+            % Main page number box with elegant frame
+            \node[
+                rectangle,
+                draw=piPrimary,
+                line width=0.6pt,
+                fill=piLight,
+                inner xsep=8pt,
+                inner ysep=3pt,
+                rounded corners=2pt
+            ] (page) at (0,0) {%
+                \footnotesize\bfseries\color{piDark}%
+                \thepage%
+            };
+            
+            % Pi symbol decoration
+            \node[
+                text=piSecondary,
+                font=\scriptsize
+            ] at (0, -0.45) {\zetacircle};
+            
+            % Ornamental line right
+            \draw[piAccent, line width=0.4pt] 
+                (0.5,0) -- (1.3,0);
+            
+            % Decorative right flourish
+            \node[
+                text=piSecondary,
+                font=\footnotesize
+            ] (right) at (1.5,0) {$\diamond$};
+            
+        \end{tikzpicture}
+    }
+}
+
+%-----------------------------------------------------------------------------
+% Header Design: Sophisticated Academic Layout
+%-----------------------------------------------------------------------------
+
+\providecommand{\fancyHeaderContent}{
+    % Double header rule with elegant styling
+    \renewcommand{\headrulewidth}{0pt}
+    
+    % Custom header rule with decorative elements
+    \fancyhead[L]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            \draw[piAccent, line width=0.4pt] 
+                ([yshift=-2pt]current page.north west) ++(\oddsidemargin+1in,0) -- 
+                ++(\textwidth,0);
+            \draw[piSecondary, line width=0.2pt, opacity=0.5] 
+                ([yshift=-3.5pt]current page.north west) ++(\oddsidemargin+1in,0) -- 
+                ++(\textwidth,0);
+        \end{tikzpicture}%
+    }
+    
+    % Center header: Section information with pi decoration
+    \fancyhead[C]{%
+        \footnotesize\itshape\color{piDark}%
+        \leftmark%
+        \enspace%
+        \textcolor{piAccent}{$\sim$}%
+        \;\zetacircle\;%
+        \textcolor{piAccent}{$\sim$}%
+        \enspace%
+        \rightmark%
+    }
+    
+    % Right header: Elegant graduation cap icon
+    \fancyhead[R]{%
+        \footnotesize\textcolor{piSecondary}{\faGraduationCap}%
+    }
+}
+
+%-----------------------------------------------------------------------------
+% Ornamental Section Break
+%-----------------------------------------------------------------------------
+
+% Decorative section separator
+\providecommand{\sectionbreak}{%
+    \vspace{0.5em}
+    \begin{center}
+        \textcolor{piSecondary}{$\diamond$}%
+        \enspace%
+        \textcolor{piAccent}{\zetacircle}%
+        \enspace%
+        \textcolor{piSecondary}{$\diamond$}%
+    \end{center}
+    \vspace{0.5em}
+}
+
+
+%=============================================================================
+% CUSTOM MACROS AND DOCUMENT SETTINGS - PI THEME
+%=============================================================================
+
+%-----------------------------------------------------------------------------
+% Mathematical Constants and Notation
+%-----------------------------------------------------------------------------
+
+% Pi with proper spacing
+\providecommand{\piconst}{\ensuremath{\pi}}
+
+% Common mathematical sets with pi theme colors
+\providecommand{\RR}{\ensuremath{\mathbb{R}}}
+\providecommand{\NN}{\ensuremath{\mathbb{N}}}
+\providecommand{\ZZ}{\ensuremath{\mathbb{Z}}}
+\providecommand{\QQ}{\ensuremath{\mathbb{Q}}}
+\providecommand{\CC}{\ensuremath{\mathbb{C}}}
+
+%-----------------------------------------------------------------------------
+% Equation Numbering Configuration
+%-----------------------------------------------------------------------------
+
+% Number equations by section (elegant academic style)
+\numberwithin{equation}{section}
+
+% Optional: Number equations by subsubsection
+\providecommand{\useSubsubsectionEqNum}{
+  \makeatletter
+  \numberwithin{equation}{subsubsection}
+  \makeatother
+}
+
+%-----------------------------------------------------------------------------
+% Footnote Styling - Pi Theme
+%-----------------------------------------------------------------------------
+
+% Custom footnote format using pi notation: π₁, π₂, etc.
+\makeatletter
+\renewcommand{\thefootnote}{$\pi_{\arabic{footnote}}$}
+\makeatother
+
+%-----------------------------------------------------------------------------
+% Custom List Environments
+%-----------------------------------------------------------------------------
+
+% Elegant enumerate with custom colors
+\setlist[enumerate]{
+    label=\textcolor{piPrimary}{\arabic*.},
+    leftmargin=*,
+    itemsep=0.3em
+}
+
+% Elegant itemize with custom symbols
+\setlist[itemize]{
+    label=\textcolor{piSecondary}{$\triangleright$},
+    leftmargin=*,
+    itemsep=0.3em
+}
+
+%-----------------------------------------------------------------------------
+% Text Highlighting Macros
+%-----------------------------------------------------------------------------
+
+% Highlight important mathematical terms
+\providecommand{\mathterm}[1]{\textcolor{piPrimary}{\textbf{#1}}}
+
+% Emphasize definitions
+\providecommand{\defterm}[1]{\textcolor{piSecondary}{\textit{#1}}}
+
+% Inline code or notation
+\providecommand{\code}[1]{\texttt{\textcolor{piDark}{#1}}}
+
+%-----------------------------------------------------------------------------
+% Box Environments for Special Content
+%-----------------------------------------------------------------------------
+
+% Key concept box
+\providecommand{\keybox}[1]{%
+    \begin{center}
+        \begin{tikzpicture}
+            \node[
+                rectangle,
+                draw=piPrimary,
+                line width=0.8pt,
+                fill=piLight,
+                inner sep=10pt,
+                rounded corners=3pt,
+                text width=0.9\textwidth
+            ] {%
+                \textcolor{piDark}{#1}%
+            };
+        \end{tikzpicture}
+    \end{center}
+}
+
+%-----------------------------------------------------------------------------
+% Reference Shortcuts
+%-----------------------------------------------------------------------------
+
+% Elegant theorem references
+\providecommand{\thmref}[1]{Theorem~\ref{#1}}
+\providecommand{\lemref}[1]{Lemma~\ref{#1}}
+\providecommand{\propref}[1]{Proposition~\ref{#1}}
+\providecommand{\corref}[1]{Corollary~\ref{#1}}
+\providecommand{\defref}[1]{Definition~\ref{#1}}
+\providecommand{\exref}[1]{Example~\ref{#1}}
+
+%-----------------------------------------------------------------------------
+% Chapter/Section Numbering Style
+%-----------------------------------------------------------------------------
+
+% Optional: Use Roman numerals for sections
+\providecommand{\useRomanSections}{
+    \renewcommand{\thesection}{\Roman{section}}
+}
+
 
 %=============================================================================
 % PAGE LAYOUT CONFIGURATION
