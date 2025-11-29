@@ -1,0 +1,60 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mext-theme}[2025/11/29 MEXT Grammar Theme]
+
+% Packages
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage[a4paper,margin=25mm,top=30mm,headheight=15pt]{geometry} % Fixed geometry
+\RequirePackage{setspace}
+\RequirePackage{parskip}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,shapes.geometric,positioning,calc,decorations.pathreplacing,shadows}
+\RequirePackage{hyperref}
+\RequirePackage{booktabs}
+\RequirePackage{enumitem}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins}
+\RequirePackage{caption}
+\RequirePackage{longtable}
+\RequirePackage{multicol}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+
+% Colors
+\definecolor{primary}{RGB}{34,79,121}
+\definecolor{accent}{RGB}{203,75,75}
+\hypersetup{colorlinks=true,linkcolor=primary,citecolor=accent,urlcolor=primary}
+
+% Page geometry and header
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\textsc{MEXT Grammar}}
+\fancyhead[R]{\textsc{\leftmark}}
+\fancyfoot[C]{\thepage}
+
+% Theorem-like boxes for examples, notes
+\newtcolorbox{definitionbox}{colback=primary!5!white,colframe=primary!60!black,sharp corners,boxrule=0.8pt}
+\newtcolorbox{examplebox}{colback=accent!5!white,colframe=accent!60!black,sharp corners,boxrule=0.8pt}
+\newtcolorbox{exercisebox}{colback=white,colframe=primary!40!black,sharp corners,boxrule=0.6pt}
+
+% Nano Banana Command
+\newcommand{\nanobanana}[2]{
+    \begin{center}
+    \begin{tikzpicture}
+        \node[anchor=south west, inner sep=0] (image) at (0,0) {\includegraphics[width=2.5cm]{#1}};
+        \node[align=left, text width=10cm, anchor=west, draw=primary, rounded corners, fill=white, inner sep=10pt, drop shadow] at (3, 1.5) {\textbf{Nano Banana says:} \\ #2};
+    \end{tikzpicture}
+    \end{center}
+}
+
+% Commands
+\newcommand{\term}[1]{\textbf{#1}}
+\newcommand{\ex}[1]{\vspace{3pt}\begin{examplebox}\textbf{Example: }#1\end{examplebox}\vspace{3pt}}
+\newcommand{\sol}[1]{\begin{tcolorbox}[colback=black!5!white,colframe=black!30!white]{\textbf{Solution:} }#1\end{tcolorbox}}
+
+\endinput
